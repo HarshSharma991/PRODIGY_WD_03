@@ -1,0 +1,146 @@
+:root {
+  --bg-light: #e0f2ff;
+  --bg-dark: #0f172a;
+  --text-light: #0f172a;
+  --text-dark: #e0f2ff;
+  --cell-bg: #f1f5f9;
+  --cell-hover: #cbd5e1;
+  --accent: #3b82f6;
+}
+
+[data-theme="dark"] {
+  background-color: var(--bg-dark);
+  color: #fefdfd; /* force white text for visibility */
+}
+
+[data-theme="light"] {
+  background-color: var(--bg-light);
+  color: #111827;
+}
+
+
+[data-theme="light"] {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+h1 {
+  color: var(--accent);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: var(--cell-bg);
+  font-size: 2.5rem;
+  color: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cell:hover {
+  background: var(--cell-hover);
+}
+
+.status {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ffffff; /* always white */
+}
+[data-theme="light"] .status {
+  color: #0f172a; /* dark navy text for light mode */
+}
+
+
+button {
+  padding: 10px 20px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+.popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.popup.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+[data-theme="dark"] .popup-content {
+  background: #1e293b;
+  color: white;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/104/104850.png'),
+                    url('https://cdn-icons-png.flaticon.com/512/104/104831.png');
+  background-repeat: no-repeat;
+  background-position: 10% 20%, 90% 80%;
+  background-size: 100px, 80px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+.container {
+  position: relative;
+  z-index: 1;
+}
